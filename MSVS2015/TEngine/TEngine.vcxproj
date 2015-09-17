@@ -26,6 +26,7 @@
     <ClInclude Include="..\..\source\GraphicsSystem\Camera.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\Fps.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\Frustum.h" />
+    <ClInclude Include="..\..\source\GraphicsSystem\ObjModel.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\Sprite.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\Render.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\RenderState.h" />
@@ -59,6 +60,7 @@
     <ClCompile Include="..\..\source\GraphicsSystem\Camera.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Fps.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Frustum.cpp" />
+    <ClCompile Include="..\..\source\GraphicsSystem\ObjModel.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Sprite.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Render.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\RenderState.cpp" />

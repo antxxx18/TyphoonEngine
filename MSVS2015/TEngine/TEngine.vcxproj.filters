@@ -93,6 +93,9 @@
     <ClInclude Include="..\..\source\GraphicsSystem\Sprite.h">
       <Filter>Graphics System</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\ObjModel.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common System">
@@ -188,6 +191,9 @@
       <Filter>Graphics System</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\GraphicsSystem\Sprite.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\ObjModel.cpp">
       <Filter>Graphics System</Filter>
     </ClCompile>
   </ItemGroup>
