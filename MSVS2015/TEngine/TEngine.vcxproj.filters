@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\..\source\stdafx.h" />
+    <ClInclude Include="..\..\source\TEngine.h" />
+    <ClInclude Include="..\..\source\CommonSystem\Common.h">
+      <Filter>Common System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\CoreSystem\Core.h">
+      <Filter>Core System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\InputSystem\InputListener.h">
+      <Filter>Input System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\InputSystem\InputManager.h">
+      <Filter>Input System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\PlatformSystem\Linux\LinuxInputCodes.h">
+      <Filter>Platform System\Linux</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\PlatformSystem\Linux\LinuxInputManager.h">
+      <Filter>Platform System\Linux</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\PlatformSystem\Windows\WinInputCodes.h">
+      <Filter>Platform System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\PlatformSystem\Windows\WinInputManager.h">
+      <Filter>Platform System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\PlatformSystem\Windows\WinWindow.h">
+      <Filter>Platform System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\UtilSystem\Log.h">
+      <Filter>Util System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\UtilSystem\Math\Matrix.h">
+      <Filter>Util System\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\UtilSystem\Math\Quaternion.h">
+      <Filter>Util System\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\UtilSystem\Math\TEMath.h">
+      <Filter>Util System\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\UtilSystem\Math\Vector2.h">
+      <Filter>Util System\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\UtilSystem\Math\Vector3.h">
+      <Filter>Util System\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Render.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Window.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Shader.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\ResourceSystem\ms3dspec.h">
+      <Filter>Resource System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\UtilSystem\Util.h">
+      <Filter>Util System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\StaticMesh.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Buffer.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\BitmapFont.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Text.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Camera.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Fps.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Frustum.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\UtilSystem\Timer.h">
+      <Filter>Util System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\RenderState.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\Sprite.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common System">
+      <UniqueIdentifier>{5f1cc031-c3f0-4207-99f0-55164e941808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core System">
+      <UniqueIdentifier>{0fa9e912-e9c7-4b08-9581-4a7e22b9185c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input System">
+      <UniqueIdentifier>{8dc0eab7-9303-4741-a8d9-6a98876b5312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform System">
+      <UniqueIdentifier>{3483084f-5bf6-4209-b270-d24a14fd611e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform System\Linux">
+      <UniqueIdentifier>{d8fd9297-c101-4aa2-84ea-97936dfdf4fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform System\Windows">
+      <UniqueIdentifier>{115180de-3c17-403b-b185-2a188a3f10a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util System">
+      <UniqueIdentifier>{4ea247f4-0d5f-49cf-8ef8-ea39c87735a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util System\Math">
+      <UniqueIdentifier>{6a33f37a-25f1-488a-b383-1bf2b8436181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics System">
+      <UniqueIdentifier>{b293714b-ff21-45ec-8a38-44cf55440c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource System">
+      <UniqueIdentifier>{9f18181a-f098-45ea-80ba-56f948a2f3ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\source\CoreSystem\Core.cpp">
+      <Filter>Core System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\PlatformSystem\Linux\LinuxInputManager.cpp">
+      <Filter>Platform System\Linux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\PlatformSystem\Windows\WinInputManager.cpp">
+      <Filter>Platform System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\PlatformSystem\Windows\WinWindow.cpp">
+      <Filter>Platform System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\UtilSystem\Log.cpp">
+      <Filter>Util System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\UtilSystem\Math\Matrix.cpp">
+      <Filter>Util System\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\UtilSystem\Math\Quaternion.cpp">
+      <Filter>Util System\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\UtilSystem\Math\Vector2.cpp">
+      <Filter>Util System\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\UtilSystem\Math\Vector3.cpp">
+      <Filter>Util System\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\Render.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\Shader.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\StaticMesh.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\Buffer.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\BitmapFont.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\Text.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\Camera.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\Fps.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\Frustum.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\UtilSystem\Timer.cpp">
+      <Filter>Util System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\RenderState.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\Sprite.cpp">
+      <Filter>Graphics System</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
