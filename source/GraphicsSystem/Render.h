@@ -11,6 +11,8 @@ namespace TE
 		friend class BitmapFont;
 		friend class Text;
 		friend class Shader;
+		friend class Model;
+		friend class ModelLoader;
 
 	public:
 		Render();

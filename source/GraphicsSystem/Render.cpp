@@ -2,10 +2,10 @@
 #include "Render.h"
 #include "CommonSystem/Common.h"
 #include "UtilSystem/Log.h"
-#include "StaticMesh.h"
 #include "Sprite.h"
 #include "BitmapFont.h"
 #include "Text.h"
+#include "Model.h"
 
 namespace TE
 {

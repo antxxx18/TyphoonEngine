@@ -63,9 +63,6 @@
     <ClInclude Include="..\..\source\UtilSystem\Util.h">
       <Filter>Util System</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\GraphicsSystem\StaticMesh.h">
-      <Filter>Graphics System</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\GraphicsSystem\Buffer.h">
       <Filter>Graphics System</Filter>
     </ClInclude>
@@ -93,7 +90,13 @@
     <ClInclude Include="..\..\source\GraphicsSystem\Sprite.h">
       <Filter>Graphics System</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\GraphicsSystem\ObjModel.h">
+    <ClInclude Include="..\..\source\GraphicsSystem\Model.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\ResourceSystem\ModelLoader.h">
+      <Filter>Resource System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\GraphicUtil.h">
       <Filter>Graphics System</Filter>
     </ClInclude>
   </ItemGroup>
@@ -163,9 +166,6 @@
     <ClCompile Include="..\..\source\GraphicsSystem\Shader.cpp">
       <Filter>Graphics System</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\GraphicsSystem\StaticMesh.cpp">
-      <Filter>Graphics System</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\GraphicsSystem\Buffer.cpp">
       <Filter>Graphics System</Filter>
     </ClCompile>
@@ -193,8 +193,11 @@
     <ClCompile Include="..\..\source\GraphicsSystem\Sprite.cpp">
       <Filter>Graphics System</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\GraphicsSystem\ObjModel.cpp">
+    <ClCompile Include="..\..\source\GraphicsSystem\Model.cpp">
       <Filter>Graphics System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\ResourceSystem\ModelLoader.cpp">
+      <Filter>Resource System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

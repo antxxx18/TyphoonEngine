@@ -1,11 +1,8 @@
-#include "TEngine.h"
-#include <iostream>
-#include "MyRender.h"
-#include "MyInput.h"
-
+#include <TEngine.h>
 using namespace TE;
+#include "MyRender.h"
 
-/*
+
 class MyInput : public InputListener
 {
 public:
@@ -33,7 +30,7 @@ public:
 		return false;
 	}
 };
-*/
+
 
 int main()
 {
@@ -41,7 +38,7 @@ int main()
 	Core core;
 
 	MyRender* render = new MyRender();
-	MyInput* input = new MyInput(render);
+	MyInput* input = new MyInput();
 
 	EngineDesc desc;
 	//desc.widnow.resizing = false;
