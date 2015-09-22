@@ -5,6 +5,7 @@
 #include "stdafx.h"
 
 #include "CoreSystem/Core.h"
+#include "CoreSystem/IGame.h"
 
 #include "InputSystem/InputListener.h"
 

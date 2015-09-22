@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClInclude Include="..\..\source\CommonSystem\Common.h" />
     <ClInclude Include="..\..\source\CoreSystem\Core.h" />
+    <ClInclude Include="..\..\source\CoreSystem\IGame.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\BitmapFont.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\Buffer.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\Camera.h" />
+    <ClInclude Include="..\..\source\GraphicsSystem\D3DDataTypes.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\Fps.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\Frustum.h" />
     <ClInclude Include="..\..\source\GraphicsSystem\GraphicUtil.h" />
@@ -56,9 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\CoreSystem\Core.cpp" />
+    <ClCompile Include="..\..\source\CoreSystem\IGame.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\BitmapFont.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Buffer.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Camera.cpp" />
+    <ClCompile Include="..\..\source\GraphicsSystem\D3DDataTypes.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Fps.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Frustum.cpp" />
     <ClCompile Include="..\..\source\GraphicsSystem\Model.cpp" />

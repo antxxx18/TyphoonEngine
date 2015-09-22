@@ -22,7 +22,7 @@ namespace TE
 		if (!Parse(fontFilename))
 			return false;
 
-		m_pShader = new Shader(m_pRender);
+		m_pShader = new Shader();
 		if (!m_pShader)
 			return false;
 
@@ -216,6 +216,5 @@ namespace TE
 		_Release(m_pConstantBuffer);
 		_Release(m_pPixelBuffer);
 		_Close(m_pShader);
-
 	}
 }

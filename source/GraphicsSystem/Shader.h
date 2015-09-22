@@ -7,7 +7,7 @@ namespace TE
 	class Shader
 	{
 	public:
-		Shader(Render* pRender);
+		Shader();
 		void AddInputElementDesc(char const * SemanticName, DXGI_FORMAT format);
 		void AddInputElementDesc(char const * SemanticName, unsigned int SemanticIndex, DXGI_FORMAT format, unsigned int InputSlot = 0, bool AlignedByteOffset = true, D3D11_INPUT_CLASSIFICATION InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA, unsigned int InstanceDataStepRate = 0);
 
@@ -19,8 +19,6 @@ namespace TE
 
 	private:
 		HRESULT CompileShaderFromFile(WCHAR* FileName, LPCSTR EntryPoint, LPCSTR ShaderModel, ID3DBlob** ppBlobOut);
-
-		Render* m_pRender;
 
 		ID3D11VertexShader* m_pVertexShader;
 		ID3D11PixelShader* m_pPixelShader;

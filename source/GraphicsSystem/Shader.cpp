@@ -2,14 +2,14 @@
 #include "Shader.h"
 #include "UtilSystem/Log.h"
 #include "UtilSystem/Util.h"
+#include "D3DDataTypes.h"
 
 #define MAXLAYOUT 8
 
 namespace TE
 {
-	Shader::Shader(Render* pRender)
+	Shader::Shader()
 	{
-		m_pRender = pRender;
 		m_pVertexShader = nullptr;
 		m_pPixelShader = nullptr;
 		m_pLayout = nullptr;
@@ -91,21 +91,21 @@ namespace TE
 			return false;
 		}
 
-		hr = m_pRender->m_pd3dDevice->CreateVertexShader(vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), NULL, &m_pVertexShader);
+		hr = D3DDataTypes::GetD3DDevice()->CreateVertexShader(vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), NULL, &m_pVertexShader);
 		if (FAILED(hr))
 		{
 			Log::Error("Could not create vertex shader " + WCharToString(namevs));
 			return false;
 		}
 
-		hr = m_pRender->m_pd3dDevice->CreatePixelShader(pixelShaderBuffer->GetBufferPointer(), pixelShaderBuffer->GetBufferSize(), NULL, &m_pPixelShader);
+		hr = D3DDataTypes::GetD3DDevice()->CreatePixelShader(pixelShaderBuffer->GetBufferPointer(), pixelShaderBuffer->GetBufferSize(), NULL, &m_pPixelShader);
 		if (FAILED(hr))
 		{
 			Log::Error("Could not create pixel shader " + WCharToString(nameps));
 			return false;
 		}
 
-		hr = m_pRender->m_pd3dDevice->CreateInputLayout(m_pLayoutFormat, m_numLayout, vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), &m_pLayout);
+		hr = D3DDataTypes::GetD3DDevice()->CreateInputLayout(m_pLayoutFormat, m_numLayout, vertexShaderBuffer->GetBufferPointer(), vertexShaderBuffer->GetBufferSize(), &m_pLayout);
 		if (FAILED(hr))
 		{
 			Log::Error("Could not create input layout.");
@@ -140,7 +140,7 @@ namespace TE
 	bool Shader::AddTexture(wchar_t* name)
 	{
 		ID3D11ShaderResourceView *texture = nullptr;
-		HRESULT hr = D3DX11CreateShaderResourceViewFromFile(m_pRender->m_pd3dDevice, name, NULL, NULL, &texture, NULL);
+		HRESULT hr = D3DX11CreateShaderResourceViewFromFile(D3DDataTypes::GetD3DDevice(), name, NULL, NULL, &texture, NULL);
 		if (FAILED(hr))
 		{
 			Log::Error("Could not load texture " + WCharToString(name));
@@ -154,11 +154,11 @@ namespace TE
 
 	void Shader::Draw()
 	{
-		m_pRender->m_pImmediateContext->IASetInputLayout(m_pLayout);
-		m_pRender->m_pImmediateContext->VSSetShader(m_pVertexShader, NULL, 0);
-		m_pRender->m_pImmediateContext->PSSetShader(m_pPixelShader, NULL, 0);
+		D3DDataTypes::GetImmediateContext()->IASetInputLayout(m_pLayout);
+		D3DDataTypes::GetImmediateContext()->VSSetShader(m_pVertexShader, NULL, 0);
+		D3DDataTypes::GetImmediateContext()->PSSetShader(m_pPixelShader, NULL, 0);
 		if (!m_textures.empty())
-			m_pRender->m_pImmediateContext->PSSetShaderResources(0, m_textures.size(), &m_textures[0]);
+			D3DDataTypes::GetImmediateContext()->PSSetShaderResources(0, m_textures.size(), &m_textures[0]);
 	}
 
 	void Shader::Close()

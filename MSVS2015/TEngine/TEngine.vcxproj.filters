@@ -99,6 +99,12 @@
     <ClInclude Include="..\..\source\GraphicsSystem\GraphicUtil.h">
       <Filter>Graphics System</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\CoreSystem\IGame.h">
+      <Filter>Core System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\GraphicsSystem\D3DDataTypes.h">
+      <Filter>Graphics System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common System">
@@ -198,6 +204,12 @@
     </ClCompile>
     <ClCompile Include="..\..\source\ResourceSystem\ModelLoader.cpp">
       <Filter>Resource System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\CoreSystem\IGame.cpp">
+      <Filter>Core System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\GraphicsSystem\D3DDataTypes.cpp">
+      <Filter>Graphics System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

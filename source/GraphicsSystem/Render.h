@@ -25,10 +25,6 @@ namespace TE
 		void SetClearColor(float r, float g, float b, float a);
 		void SetClearColor(float ClearColor[4]);
 
-		virtual bool Init() = 0;
-		virtual bool Draw() = 0;
-		virtual void Close() = 0;
-
 		void TurnZBufferOn();
 		void TurnZBufferOff();
 
@@ -45,11 +41,16 @@ namespace TE
 			_aligned_free(p);
 		}
 
-	protected:
+		static unsigned int GetWidth() { return m_width; }
+		static unsigned int GetHeight() { return m_height; }
+
+		XMMATRIX m_Ortho;
+		XMMATRIX m_Projection;
+
+	private:
 
 		bool CreateDevice();
 		bool CreateDepthStencil();
-		void InitMatrix();
 		void Resize();
 
 		RenderState* m_pRenderState;
@@ -61,10 +62,9 @@ namespace TE
 		IDXGISwapChain* m_pSwapChain;
 		ID3D11RenderTargetView* m_pRenderTargetView;
 		ID3D11DepthStencilView* m_pDepthStencilView;
-		XMMATRIX m_Ortho;
-		XMMATRIX m_Projection;
+		
 		HWND m_hwnd;
-		unsigned int m_width;
-		unsigned int m_height;
+		static unsigned int m_width;
+		static unsigned int m_height;
 	};
 }

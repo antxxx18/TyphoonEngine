@@ -4,6 +4,7 @@
 #include "GraphicsSystem/Render.h"
 #include "InputSystem/InputManager.h"
 #include "UtilSystem/Log.h"
+#include "IGame.h"
 
 namespace TE
 {
@@ -11,7 +12,7 @@ namespace TE
 	struct EngineDesc
 	{
 		DescWindow widnow;
-		Render *render;
+		IGame* pGame;
 	};
 
 	class Core
@@ -26,6 +27,8 @@ namespace TE
 		
 		void AddInputListener(InputListener* pListener);
 
+		static Render* getRender() { return m_pRender; }
+
 	private:
 		static bool Frame();
 
@@ -36,5 +39,6 @@ namespace TE
 		static Log* m_pLog;
 		static bool m_isInit;
 		static bool m_isClosed;
+		static IGame* m_pGame;
 	};
 }

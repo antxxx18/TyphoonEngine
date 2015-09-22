@@ -1,18 +1,21 @@
 #pragma once
-
 #include <TEngine.h>
-
 using namespace TE;
 
-class MyRender : public Render
+class MyGame : public IGame
 {
 public:
-	MyRender();
-	bool Init();
-	bool Draw();
+	MyGame();
+	~MyGame();
+
+	void Init();
+	void Update();
+	void Render();
 	void Close();
 
 private:
 	Model* model;
 	XMMATRIX m_View;
+	Camera* camera;
 };
+

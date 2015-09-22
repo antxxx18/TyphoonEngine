@@ -1,16 +1,17 @@
 #pragma once
 
 #include "Render.h"
+#include "Camera.h"
 
 namespace TE
 {
 	class Model
 	{
 	public:
-		Model(Render* pRender);
+		Model();
 
 		bool Init();
-		void Draw(CXMMATRIX viewmatrix);
+		void Draw(Camera* pCamera);
 		void Close();
 
 		void Translate(float x, float y, float z);
@@ -21,10 +22,8 @@ namespace TE
 	//private:
 
 		void RenderBuffers();
-		void SetShaderParameters(CXMMATRIX viewmatrix);
+		void SetShaderParameters(Camera* pCamera);
 		void RenderShader();
-
-		Render* m_pRender;
 
 		ID3D11Buffer* m_pVertexBuffer;
 		ID3D11Buffer* m_pIndexBuffer;

@@ -6,9 +6,13 @@
 #include "BitmapFont.h"
 #include "Text.h"
 #include "Model.h"
+#include "D3DDataTypes.h"
 
 namespace TE
 {
+	unsigned int Render::m_width = 0;
+	unsigned int Render::m_height = 0;
+
 	Render::Render()
 	{
 		m_pd3dDevice = nullptr;
@@ -72,9 +76,7 @@ namespace TE
 		vp.TopLeftY = 0;
 		m_pImmediateContext->RSSetViewports(1, &vp);
 
-		InitMatrix();
-
-		return Init();
+		return true;
 	}
 
 	bool Render::CreateDevice()
@@ -153,14 +155,11 @@ namespace TE
 
 		_Release(m_pDepthStencil);
 
-		return true;
-	}
+		D3DDataTypes::SetD3DDevice(m_pd3dDevice);
+		D3DDataTypes::SetImmediateContext(m_pImmediateContext);
+		D3DDataTypes::SetSwapChain(m_pSwapChain);
 
-	void Render::InitMatrix()
-	{
-		float aspect = (float)m_width / (float)m_height;
-		m_Projection = XMMatrixPerspectiveFovLH(0.4f*3.14f, aspect, 1.0f, 1000.0f);
-		m_Ortho = XMMatrixOrthographicLH((float)m_width, (float)m_height, 0.0f, 1.0f);
+		return true;
 	}
 
 	void Render::SetClearColor(float r, float g, float b, float a)
@@ -191,8 +190,6 @@ namespace TE
 
 	void Render::Shutdown()
 	{
-		Close();
-
 		if (m_pImmediateContext)
 			m_pImmediateContext->ClearState();;
 

@@ -36,7 +36,7 @@ namespace TE
 		if (!InitBuffers())
 			return false;
 
-		m_pShader = new Shader(m_pRender);
+		m_pShader = new Shader();
 		if (!m_pShader)
 			return false;
 		if (!m_pShader->AddTexture(textureFilename))

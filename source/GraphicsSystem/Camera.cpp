@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Camera.h"
+#include "Render.h"
 
 namespace TE
 {
@@ -20,6 +21,12 @@ namespace TE
 
 		m_pos = XMFLOAT3(0.0f, 0.0f, 0.0f);
 		m_rot = XMFLOAT3(0.0f, 0.0f, 0.0f);
+
+
+
+		float aspect = (float)Render::GetWidth() / (float)Render::GetHeight();
+		m_Projection = XMMatrixPerspectiveFovLH(0.4f*3.14f, aspect, 1.0f, 1000.0f);
+		m_Ortho = XMMatrixOrthographicLH((float)Render::GetWidth(), (float)Render::GetHeight(), 0.0f, 1.0f);
 
 		m_time.Init();
 	}
@@ -286,5 +293,10 @@ namespace TE
 	CXMMATRIX Camera::GetViewMatrix()
 	{
 		return m_viewMatrix;
+	}
+
+	CXMMATRIX Camera::GetProjMatrix()
+	{
+		return m_Projection;
 	}
 }

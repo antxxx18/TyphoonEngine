@@ -11,6 +11,7 @@ namespace TE
 	Log* Core::m_pLog = nullptr;
 	bool Core::m_isClosed = false;
 	bool Core::m_isInit = false;
+	IGame* Core::m_pGame = nullptr;
 
 
 	Core::Core()
@@ -23,9 +24,10 @@ namespace TE
 
 	bool Core::Init(EngineDesc const & desc)
 	{
-		m_pRender = desc.render;
+		m_pGame = desc.pGame;
 
 		m_pWindow = new Window();
+		m_pRender = new Render();
 		m_pInputManager = new InputManager();
 
 		m_pInputManager->Init();
@@ -41,6 +43,8 @@ namespace TE
 			Log::Error("Could not create render device");
 			return false;
 		}
+
+		m_pGame->Init();
 
 		m_isInit = true;
 		return true;
@@ -80,9 +84,10 @@ namespace TE
 		{
 		}
 
+		m_pGame->Update();
+
 		m_pRender->BeginFrame();
-		if (!m_pRender->Draw())
-			return false;
+		m_pGame->Render();
 		m_pRender->EndFrame();
 		return true;
 	}
@@ -97,6 +102,7 @@ namespace TE
 		m_isInit = false;
 		m_pRender->Shutdown();
 		_Delete(m_pRender);
+		_Close(m_pGame);
 		_Close(m_pWindow);
 		_Close(m_pInputManager);
 		_Delete(m_pLog);

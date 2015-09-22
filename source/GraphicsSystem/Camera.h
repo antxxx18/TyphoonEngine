@@ -32,10 +32,13 @@ namespace TE
 		XMFLOAT3 GetRot() { return m_rot; }
 
 		CXMMATRIX GetViewMatrix();
+		CXMMATRIX GetProjMatrix();
 
 	private:
 		Timer m_time;
 		XMMATRIX m_viewMatrix;
+		XMMATRIX m_Ortho;
+		XMMATRIX m_Projection;
 		XMFLOAT3 m_pos;
 		XMFLOAT3 m_rot;
 

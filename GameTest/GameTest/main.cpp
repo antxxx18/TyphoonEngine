@@ -1,6 +1,6 @@
 #include <TEngine.h>
 using namespace TE;
-#include "MyRender.h"
+#include "MyGame.h"
 
 
 class MyInput : public InputListener
@@ -37,12 +37,12 @@ int main()
 	
 	Core core;
 
-	MyRender* render = new MyRender();
+	MyGame* game = new MyGame();
 	MyInput* input = new MyInput();
 
 	EngineDesc desc;
 	//desc.widnow.resizing = false;
-	desc.render = render;
+	desc.pGame = game;
 	
 
 
