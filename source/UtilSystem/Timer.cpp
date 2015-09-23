@@ -3,6 +3,7 @@
 
 namespace TE
 {
+	float Timer::m_frameTime = 0;
 
 	bool Timer::Init()
 	{

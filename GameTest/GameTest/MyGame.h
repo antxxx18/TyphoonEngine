@@ -5,7 +5,7 @@ using namespace TE;
 class MyGame : public IGame
 {
 public:
-	MyGame();
+	MyGame(Core* core);
 	~MyGame();
 
 	void Init();
@@ -14,8 +14,13 @@ public:
 	void Close();
 
 private:
+
+	BitmapFont* font;
+	Text* t1;
+
+	Core* m_pCore;
+
 	Model* model;
-	XMMATRIX m_View;
 	Camera* camera;
 };
 

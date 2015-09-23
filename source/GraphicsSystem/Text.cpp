@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "Text.h"
 #include "Buffer.h"
+#include "D3DDataTypes.h"
 
 namespace TE
 {
-	Text::Text(Render *render, BitmapFont *font)
+	Text::Text(BitmapFont* font)
 	{
-		m_render = render;
 		m_font = font;
 		m_vertexBuffer = nullptr;
 		m_indexBuffer = nullptr;
@@ -58,11 +58,11 @@ namespace TE
 			indices[i * 6 + 5] = i * 4 + 1;
 		}
 
-		m_vertexBuffer = Buffer::CreateVertexBuffer(m_render->m_pd3dDevice, sizeof(VertexFont)*m_numvertex, !m_isStatic, vertex);
+		m_vertexBuffer = Buffer::CreateVertexBuffer(D3DDataTypes::GetD3DDevice(), sizeof(VertexFont)*m_numvertex, !m_isStatic, vertex);
 		if (!m_vertexBuffer)
 			return false;
 
-		m_indexBuffer = Buffer::CreateIndexBuffer(m_render->m_pd3dDevice, sizeof(unsigned long)*m_numindex, false, indices);
+		m_indexBuffer = Buffer::CreateIndexBuffer(D3DDataTypes::GetD3DDevice(), sizeof(unsigned long)*m_numindex, false, indices);
 		if (!m_indexBuffer)
 			return false;
 
@@ -75,7 +75,7 @@ namespace TE
 	bool Text::m_updatebuffer(const std::wstring &text)
 	{
 		D3D11_MAPPED_SUBRESOURCE mappedResource;
-		HRESULT result = m_render->m_pImmediateContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+		HRESULT result = D3DDataTypes::GetImmediateContext()->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 		if (FAILED(result))
 			return false;
 
@@ -83,24 +83,24 @@ namespace TE
 
 		m_font->BuildVertexArray(verticesPtr, m_numvertex, text.c_str());
 
-		m_render->m_pImmediateContext->Unmap(m_vertexBuffer, 0);
+		D3DDataTypes::GetImmediateContext()->Unmap(m_vertexBuffer, 0);
 
 		return true;
 	}
 
-	void Text::Draw(float r, float g, float b, float x, float y)
+	void Text::Draw(Camera* pCamera, float r, float g, float b, float x, float y)
 	{
 		m_RenderBuffers();
-		m_font->Draw(m_numdrawindex, r, g, b, x, y);
+		m_font->Draw(pCamera, m_numdrawindex, r, g, b, x, y);
 	}
 
 	void Text::m_RenderBuffers()
 	{
 		unsigned int stride = sizeof(VertexFont);
 		unsigned int offset = 0;
-		m_render->m_pImmediateContext->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
-		m_render->m_pImmediateContext->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
-		m_render->m_pImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		D3DDataTypes::GetImmediateContext()->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
+		D3DDataTypes::GetImmediateContext()->IASetIndexBuffer(m_indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+		D3DDataTypes::GetImmediateContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	}
 
 	void Text::Close()

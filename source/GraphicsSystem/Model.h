@@ -2,6 +2,7 @@
 
 #include "Render.h"
 #include "Camera.h"
+#include "Shader.h"
 
 namespace TE
 {
@@ -19,18 +20,29 @@ namespace TE
 		void Scale(float x, float y, float z);
 		void Identity();
 
-	//private:
-
-		void RenderBuffers();
-		void SetShaderParameters(Camera* pCamera);
-		void RenderShader();
-
 		ID3D11Buffer* m_pVertexBuffer;
 		ID3D11Buffer* m_pIndexBuffer;
 		ID3D11Buffer* m_pConstantBuffer;
 		Shader* m_pShader;
 
-		XMMATRIX m_objMatrix;
 		unsigned short m_indexCount;
+
+		void* operator new(size_t i)
+		{
+			return _aligned_malloc(i,16);
+		}
+
+			void operator delete(void* p)
+		{
+			_aligned_free(p);
+		}
+
+	private:
+
+		void RenderBuffers();
+		void SetShaderParameters(Camera* pCamera);
+		void RenderShader();
+
+		XMMATRIX m_objMatrix;
 	};
 }

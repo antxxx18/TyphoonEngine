@@ -8,12 +8,9 @@ namespace TE
 	class ModelLoader
 	{
 	public:
-		ModelLoader(Render* pRender);
+		ModelLoader();
 		bool ObjLoad(Model* pModel, wchar_t* Filename);
 		bool MS3DLoad(Model* pModel, wchar_t* Filename);
-
-	//private:
-		Render* m_pRender;
 	};
 
 }

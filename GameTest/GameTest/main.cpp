@@ -2,7 +2,6 @@
 using namespace TE;
 #include "MyGame.h"
 
-
 class MyInput : public InputListener
 {
 public:
@@ -34,18 +33,15 @@ public:
 
 int main()
 {
-	
 	Core core;
 
-	MyGame* game = new MyGame();
+	MyGame* game = new MyGame(&core);
 	MyInput* input = new MyInput();
 
 	EngineDesc desc;
 	//desc.widnow.resizing = false;
 	desc.pGame = game;
 	
-
-
 	//desc.widnow.width = 800;
 	//desc.widnow.height = 600;
 

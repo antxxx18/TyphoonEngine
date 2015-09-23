@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Render.h"
+#include "Camera.h"
+#include "Shader.h"
 
 namespace TE
 {
@@ -35,18 +37,17 @@ namespace TE
 			XMFLOAT4 pixelColor;
 		};
 	public:
-		BitmapFont(Render* pRender);
+		BitmapFont();
 
 		bool Init(char* fontFilename);
-		void Draw(unsigned int index, float r, float g, float b, float x, float y);
+		void Draw(Camera* pCamera, unsigned int index, float r, float g, float b, float x, float y);
 		void BuildVertexArray(VertexFont* vert, int numvert, wchar_t const * sentence);
 		void Close();
 
 	private:
 		bool Parse(char* fontFilename);
-		void SetShaderParameters(float r, float g, float b, float x, float y);
+		void SetShaderParameters(Camera* pCamera, float r, float g, float b, float x, float y);
 
-		Render* m_pRender;
 		ID3D11Buffer* m_pConstantBuffer;
 		ID3D11Buffer* m_pPixelBuffer;
 		Shader* m_pShader;

@@ -7,7 +7,7 @@ namespace TE
 	class Camera
 	{
 	public:
-		Camera();
+		Camera(float fieldOfViewY, float viewportWidth, float viewportHeight, float nearZ, float farZ);
 
 		void Render();
 
@@ -33,14 +33,27 @@ namespace TE
 
 		CXMMATRIX GetViewMatrix();
 		CXMMATRIX GetProjMatrix();
+		CXMMATRIX GetOrtoMatrix();
+
+		void* operator new(size_t i)
+		{
+			return _aligned_malloc(i,16);
+		}
+
+			void operator delete(void* p)
+		{
+			_aligned_free(p);
+		}
 
 	private:
 		Timer m_time;
+		
+		XMFLOAT3 m_pos;
+		XMFLOAT3 m_rot;
+
 		XMMATRIX m_viewMatrix;
 		XMMATRIX m_Ortho;
 		XMMATRIX m_Projection;
-		XMFLOAT3 m_pos;
-		XMFLOAT3 m_rot;
 
 		float m_frameTime;
 

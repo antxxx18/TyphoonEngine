@@ -8,10 +8,10 @@ namespace TE
 	class Text
 	{
 	public:
-		Text(Render *render, BitmapFont *font);
+		Text(BitmapFont* font);
 
 		bool Init(std::wstring const &text, bool statictext = true, int charsize = 0);
-		void Draw(float r, float g, float b, float x, float y);
+		void Draw(Camera* pCamera, float r, float g, float b, float x, float y);
 		void Close();
 
 		bool SetText(std::wstring const &text);
@@ -21,11 +21,9 @@ namespace TE
 		void m_RenderBuffers();
 		bool m_updatebuffer(std::wstring const &text);
 
-		Render *m_render;
-
-		BitmapFont *m_font;
-		ID3D11Buffer *m_vertexBuffer;
-		ID3D11Buffer *m_indexBuffer;
+		BitmapFont* m_font;
+		ID3D11Buffer* m_vertexBuffer;
+		ID3D11Buffer* m_indexBuffer;
 		int m_numindex;
 		int m_numdrawindex;
 		int m_numvertex;

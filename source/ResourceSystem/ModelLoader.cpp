@@ -5,14 +5,14 @@
 #include "GraphicsSystem/Buffer.h"
 #include "GraphicsSystem/Shader.h"
 #include "GraphicsSystem/GraphicUtil.h"
+#include "GraphicsSystem/D3DDataTypes.h"
 
 #include <fstream>
 
 namespace TE
 {
-	ModelLoader::ModelLoader(Render * pRender)
+	ModelLoader::ModelLoader()
 	{
-		m_pRender = pRender;
 	}
 
 	bool ModelLoader::ObjLoad(Model * pModel, wchar_t * Filename)
@@ -124,15 +124,15 @@ namespace TE
 		_DeleteArray(pMS3DTriangles);
 		_DeleteArray(pMS3DVertices);
 
-		pModel->m_pVertexBuffer = Buffer::CreateVertexBuffer(m_pRender->m_pd3dDevice, sizeof(Vertex)*VertexCount, false, vertices);
+		pModel->m_pVertexBuffer = Buffer::CreateVertexBuffer(D3DDataTypes::GetD3DDevice(), sizeof(Vertex)*VertexCount, false, vertices);
 		if (!pModel->m_pVertexBuffer)
 			return false;
 
-		pModel->m_pIndexBuffer = Buffer::CreateIndexBuffer(m_pRender->m_pd3dDevice, sizeof(unsigned short)*pModel->m_indexCount, false, indices);
+		pModel->m_pIndexBuffer = Buffer::CreateIndexBuffer(D3DDataTypes::GetD3DDevice(), sizeof(unsigned short)*pModel->m_indexCount, false, indices);
 		if (!pModel->m_pIndexBuffer)
 			return false;
 
-		pModel->m_pConstantBuffer = Buffer::CreateConstantBuffer(m_pRender->m_pd3dDevice, sizeof(ConstantBuffer), false);
+		pModel->m_pConstantBuffer = Buffer::CreateConstantBuffer(D3DDataTypes::GetD3DDevice(), sizeof(ConstantBuffer), false);
 		if (!pModel->m_pConstantBuffer)
 			return false;
 

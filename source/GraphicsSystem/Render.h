@@ -6,14 +6,6 @@ namespace TE
 {
 	class Render
 	{
-		friend class StaticMesh;
-		friend class Sprite;
-		friend class BitmapFont;
-		friend class Text;
-		friend class Shader;
-		friend class Model;
-		friend class ModelLoader;
-
 	public:
 		Render();
 		virtual ~Render();

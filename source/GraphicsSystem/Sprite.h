@@ -1,25 +1,25 @@
 #pragma once
 
 #include "Render.h"
+#include "Shader.h"
+#include "Camera.h"
 
 namespace TE
 {
 	class Sprite
 	{
 	public:
-		Sprite(Render* pRender);
+		Sprite();
 
 		bool Init(wchar_t* name, float bitmapWidth, float bitmapHeight);
-		void Draw(float positionX, float positionY);
+		void Draw(Camera* pCamera, float positionX, float positionY);
 		void Close();
 
 	private:
 		bool InitBuffers();
 		void RenderBuffers();
-		void SetShaderParameters(float x, float y);
+		void SetShaderParameters(Camera* pCamera, float x, float y);
 		void RenderShader();
-
-		Render* m_pRender;
 
 		ID3D11Buffer* m_pVertexBuffer;
 		ID3D11Buffer* m_pIndexBuffer;

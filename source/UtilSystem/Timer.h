@@ -8,12 +8,12 @@ namespace TE
 		bool Init();
 		void Frame();
 
-		float GetTime();
+		static float GetTime();
 
 	private:
 		INT64 m_frequency;
 		INT64 m_startTime;
 		float m_ticksPerMs;
-		float m_frameTime;
+		static float m_frameTime;
 	};
 }

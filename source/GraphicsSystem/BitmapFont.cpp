@@ -4,12 +4,12 @@
 #include <fstream>
 #include "Shader.h"
 #include "UtilSystem/Util.h"
+#include "D3DDataTypes.h"
 
 namespace TE
 {
-	BitmapFont::BitmapFont(Render* pRender)
+	BitmapFont::BitmapFont()
 	{
-		m_pRender = pRender;
 		m_pConstantBuffer = nullptr;
 		m_pPixelBuffer = nullptr;
 		m_pShader = nullptr;
@@ -30,15 +30,15 @@ namespace TE
 			return false;
 		m_pShader->AddInputElementDesc("POSITION", DXGI_FORMAT_R32G32B32_FLOAT);
 		m_pShader->AddInputElementDesc("TEXCOORD", DXGI_FORMAT_R32G32_FLOAT);
-		if (!m_pShader->CreateShader(L"BitmapFont.vs", L"BitmapFont.ps"))
+		if (!m_pShader->CreateShader(L"data/shaders/BitmapFont.vs", L"data/shaders/BitmapFont.ps"))
 			return false;
 
 
-		m_pConstantBuffer = Buffer::CreateConstantBuffer(m_pRender->m_pd3dDevice, sizeof(ConstantBuffer), false);
+		m_pConstantBuffer = Buffer::CreateConstantBuffer(D3DDataTypes::GetD3DDevice(), sizeof(ConstantBuffer), false);
 		if (!m_pConstantBuffer)
 			return false;
 
-		m_pPixelBuffer = Buffer::CreateConstantBuffer(m_pRender->m_pd3dDevice, sizeof(PixelBufferType), false);
+		m_pPixelBuffer = Buffer::CreateConstantBuffer(D3DDataTypes::GetD3DDevice(), sizeof(PixelBufferType), false);
 		if (!m_pPixelBuffer)
 			return false;
 
@@ -147,8 +147,8 @@ namespace TE
 		if (numLetters * 4 > numvert)
 			numLetters = numvert / 4;
 
-		float drawX = (float)m_pRender->m_width / 2 * -1;
-		float drawY = (float)m_pRender->m_height / 2;
+		float drawX = (float)Render::GetWidth() / 2 * -1;
+		float drawY = (float)Render::GetHeight() / 2;
 
 		int index = 0;
 		for (int i = 0; i<numLetters; i++)
@@ -186,29 +186,29 @@ namespace TE
 		}
 	}
 
-	void BitmapFont::Draw(unsigned int index, float r, float g, float b, float x, float y)
+	void BitmapFont::Draw(Camera* pCamera, unsigned int index, float r, float g, float b, float x, float y)
 	{
-		SetShaderParameters(r, g, b, x, y);
+		SetShaderParameters(pCamera, r, g, b, x, y);
 
 		m_pShader->Draw();
-		m_pRender->m_pImmediateContext->DrawIndexed(index, 0, 0);
+		D3DDataTypes::GetImmediateContext()->DrawIndexed(index, 0, 0);
 	}
 
-	void BitmapFont::SetShaderParameters(float r, float g, float b, float x, float y)
+	void BitmapFont::SetShaderParameters(Camera* pCamera, float r, float g, float b, float x, float y)
 	{
 		XMMATRIX objmatrix = XMMatrixTranslation(x, -y, 0);
-		XMMATRIX wvp = objmatrix*m_pRender->m_Ortho;
+		XMMATRIX wvp = objmatrix*pCamera->GetOrtoMatrix();
 		ConstantBuffer cb;
 		cb.WVP = XMMatrixTranspose(wvp);
-		m_pRender->m_pImmediateContext->UpdateSubresource(m_pConstantBuffer, 0, NULL, &cb, 0, 0);
+		D3DDataTypes::GetImmediateContext()->UpdateSubresource(m_pConstantBuffer, 0, NULL, &cb, 0, 0);
 
-		m_pRender->m_pImmediateContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
+		D3DDataTypes::GetImmediateContext()->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
 		PixelBufferType pb;
 		pb.pixelColor = XMFLOAT4(r, g, b, 1.0f);
-		m_pRender->m_pImmediateContext->UpdateSubresource(m_pPixelBuffer, 0, NULL, &pb, 0, 0);
+		D3DDataTypes::GetImmediateContext()->UpdateSubresource(m_pPixelBuffer, 0, NULL, &pb, 0, 0);
 
-		m_pRender->m_pImmediateContext->PSSetConstantBuffers(0, 1, &m_pPixelBuffer);
+		D3DDataTypes::GetImmediateContext()->PSSetConstantBuffers(0, 1, &m_pPixelBuffer);
 	}
 
 	void BitmapFont::Close()
